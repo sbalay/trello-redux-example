@@ -23,7 +23,9 @@ class App extends Component {
         {BaseStyles}
         <div style={styles.header}>
           <img src={logo} style={styles.logo} alt="logo" />
-          <h2>Welcome to React {this.props.currentUser ? this.props.currentUser.email : 'Guest'}</h2>
+          <h2>
+            Welcome to React {this.props.currentUser ? this.props.currentUser.email : 'Guest'}
+          </h2>
         </div>
         <Link to="/dummy">
           <button>Show dummy route</button>
