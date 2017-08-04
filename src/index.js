@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import registerServiceWorker from './registerServiceWorker';
 import './config/perf';
 
 import AppRoutes from './config/routes';
@@ -13,3 +14,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+registerServiceWorker();
