@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './DummyComponent.styles';
+import styles from './styles';
 
 function DummyComponent() {
   return (

@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { StyleRoot } from 'radium';
 
-import logo from '../../assets/logo.svg';
-import { apiSetup } from '../../config/api';
-import { actionCreators as authActions, propTypes as authPropTypes } from '../../redux/authHandlers';
+import { apiSetup } from '../../../config/api';
+import logo from '../../../assets/logo.svg';
+import { actionCreators as authActions } from '../../../redux/auth/actions';
+import { propTypes as authPropTypes } from '../../../redux/auth/reducer';
 
-import styles, { BaseStyles } from './App.styles';
+import styles, { BaseStyles } from './styles';
 
 class App extends Component {
   componentDidMount() {
@@ -36,8 +37,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-  loading: authPropTypes().loading,
-  currentUser: authPropTypes().currentUser
+  loading: authPropTypes.loading,
+  currentUser: authPropTypes.currentUser
 };
 
 const mapStateToProps = store => ({
