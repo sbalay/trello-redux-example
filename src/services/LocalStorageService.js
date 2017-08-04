@@ -1,30 +1,45 @@
+const tempStorage = {};
+
 const getValue = key => {
   const encodedKey = window.btoa(key);
-  const encodedValue = window.localStorage.getItem(encodedKey);
+  let encodedValue;
+  try {
+    encodedValue = window.localStorage.getItem(encodedKey);
+  } catch (e) {
+    encodedValue = tempStorage[encodedKey];
+  }
   const stringValue = encodedValue && window.atob(encodedValue);
-  return JSON.parse(stringValue);
+  return stringValue && JSON.parse(stringValue);
 };
 
 const setValue = (key, value) => {
   const encodedKey = window.btoa(key);
   const stringValue = JSON.stringify(value);
   const encodedValue = window.btoa(stringValue);
-  return window.localStorage.setItem(encodedKey, encodedValue);
+  try {
+    window.localStorage.setItem(encodedKey, encodedValue);
+  } catch (e) {
+    tempStorage[encodedKey] = encodedValue;
+  }
 };
 
 const removeValue = key => {
   const encodedKey = window.btoa(key);
-  return window.localStorage.removeItem(encodedKey);
+  try {
+    window.localStorage.removeItem(encodedKey);
+  } catch (e) {
+    tempStorage[encodedKey] = undefined;
+  }
 };
 
-export function setSessionToken(sessionToken) {
-  return setValue('@@AUTH:session_token', sessionToken);
-}
+const defineProperty = (prop, defaultKey = '', tag = '') => {
+  const capitalizedKey = `${prop[0].toUpperCase()}${prop.substring(1)}`;
+  module.exports[`set${capitalizedKey}`] = (val, key = defaultKey) =>
+    setValue(`@@UTILITY:${prop}${tag}${key}`, val);
+  module.exports[`get${capitalizedKey}`] = (key = defaultKey) => getValue(`@@UTILITY:${prop}${tag}${key}`);
+  module.exports[`remove${capitalizedKey}`] = (key = defaultKey) =>
+    removeValue(`@@UTILITY:${prop}${tag}${key}`);
+};
 
-export function getSessionToken() {
-  return getValue('@@AUTH:session_token');
-}
-
-export function removeSessionToken() {
-  return removeValue('@@AUTH:session_token');
-}
+// ------------------------------ LOCAL STORAGE PROPERTIES ------------------------------
+defineProperty('sessionToken');
