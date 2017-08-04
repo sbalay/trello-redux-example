@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import Immutable from 'seamless-immutable';
 
 import * as AuthService from '../services/AuthService';
+
 import { stringArrayToObject } from './utils';
 
 /* ------------- Auth actions' name ------------- */

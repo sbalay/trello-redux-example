@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { StyleRoot } from 'radium';
 
+import logo from '../../assets/logo.svg';
 import { apiSetup } from '../../config/api';
 import { actionCreators as authActions, propTypes as authPropTypes } from '../../redux/authHandlers';
-import styles, { BaseStyles } from './App.styles';
 
-import logo from '../../assets/logo.svg';
+import styles, { BaseStyles } from './App.styles';
 
 class App extends Component {
   componentDidMount() {

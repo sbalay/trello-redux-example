@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import registerServiceWorker from './registerServiceWorker';
 import './config/perf';
 
+import registerServiceWorker from './registerServiceWorker';
 import AppRoutes from './config/routes';
 import store from './redux/store';
 

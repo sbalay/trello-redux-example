@@ -3,7 +3,6 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router-dom';
 
 import { history } from '../redux/store';
-
 import DummyComponent from '../screens/DummyComponent';
 import App from '../screens/App';
 
