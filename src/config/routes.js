@@ -3,15 +3,20 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router-dom';
 
 import { history } from '../redux/store';
-import Dummy from '../app/screens/Dummy';
-import App from '../app/screens/App';
+import BoardsList from '../app/screens/BoardsList';
+import Board from '../app/screens/Board';
+
+export const ROUTES = {
+  BOARDS_LIST: () => '/',
+  BOARD_DETAIL: id => `/board/${id}`
+};
 
 function AppRoutes() {
   return (
     <ConnectedRouter history={history}>
       <div>
-        <Route exact path="/" component={App} />
-        <Route path="/dummy" component={Dummy} />
+        <Route exact path="/" component={BoardsList} />
+        <Route exact path="/board/:id" component={Board} />
       </div>
     </ConnectedRouter>
   );

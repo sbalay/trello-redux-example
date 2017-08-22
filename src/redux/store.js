@@ -3,12 +3,12 @@ import thunk from 'redux-thunk';
 import { routerReducer as router, routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
-import { reducer as auth } from './auth/reducer';
+import boards from './boards/reducer';
 
 export const history = createHistory();
 
 const reducers = combineReducers({
-  auth,
+  boards,
   router
 });
 
