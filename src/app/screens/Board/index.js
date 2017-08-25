@@ -33,8 +33,6 @@ const mapStateToProps = store => ({
   board: store.boards.detail
 });
 
-export default connect(mapStateToProps)(BoardDetailContainer);
-
 BoardDetailContainer.propTypes = {
   loading: boardPropTypes.loading,
   board: boardPropTypes.board,
@@ -44,3 +42,5 @@ BoardDetailContainer.propTypes = {
     }).isRequired
   }).isRequired
 };
+
+export default connect(mapStateToProps)(BoardDetailContainer);

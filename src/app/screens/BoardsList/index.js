@@ -31,9 +31,9 @@ const mapStateToProps = store => ({
   boards: store.boards.list
 });
 
-export default connect(mapStateToProps)(BoardsListContainer);
-
 BoardsListContainer.propTypes = {
   loading: boardPropTypes.loading,
   boards: PropTypes.arrayOf(boardPropTypes.board)
 };
+
+export default connect(mapStateToProps)(BoardsListContainer);
