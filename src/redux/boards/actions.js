@@ -7,7 +7,10 @@ export const actions = stringArrayToObject([
   'GET_BOARDS_FAILURE',
   'GET_BOARD',
   'GET_BOARD_SUCCESS',
-  'GET_BOARD_FAILURE'
+  'GET_BOARD_FAILURE',
+  'DELETE_BOARD',
+  'DELETE_BOARD_SUCCESS',
+  'DELETE_BOARD_FAILURE'
 ]);
 
 const actionCreators = {
@@ -62,6 +65,33 @@ const actionCreators = {
   getBoardFailure(error) {
     return {
       type: actions.GET_BOARD_FAILURE,
+      payload: { error }
+    };
+  },
+  deleteBoard(boardId) {
+    return async dispatch => {
+      dispatch({ type: actions.DELETE_BOARD });
+      try {
+        const response = await BoardService.deleteBoard(boardId);
+        if (response.ok) {
+          dispatch(actionCreators.deleteBoardSuccess(boardId));
+        } else {
+          throw new Error(response);
+        }
+      } catch (e) {
+        dispatch(actionCreators.deleteBoardFailure(e));
+      }
+    };
+  },
+  deleteBoardSuccess(boardId) {
+    return {
+      type: actions.DELETE_BOARD_SUCCESS,
+      payload: { boardId }
+    };
+  },
+  deleteBoardFailure(error) {
+    return {
+      type: actions.DELETE_BOARD_FAILURE,
       payload: { error }
     };
   }

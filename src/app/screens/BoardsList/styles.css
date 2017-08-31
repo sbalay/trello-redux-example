@@ -1,0 +1,20 @@
+.board-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 130px;
+  width: 300px;
+  border: 1px solid black;
+  margin: 20px 5px;
+  padding: 10px;
+}
+
+.board-card h2 {
+  text-align: center;
+}
+
+.board-card a {
+  flex: 1;
+  align-self: center;
+}

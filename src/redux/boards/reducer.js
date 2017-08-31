@@ -35,6 +35,22 @@ export default function reducer(state = Immutable(defaultState), action) {
     case actions.GET_BOARD_FAILURE: {
       return state.merge({ loading: false, error: action.payload.error });
     }
+    case actions.DELETE_BOARD: {
+      return state.merge({ loading: true });
+    }
+    case actions.DELETE_BOARD_SUCCESS: {
+      const deletedBoardIndex = state.list.findIndex(board => board.id === action.payload.boardId);
+      const newList = state.list
+        .slice(0, deletedBoardIndex)
+        .concat(state.list.slice(deletedBoardIndex + 1, state.list.length));
+      return state.merge({
+        loading: false,
+        list: newList
+      });
+    }
+    case actions.DELETE_BOARD_FAILURE: {
+      return state.merge({ loading: false, error: action.payload.error });
+    }
     default: {
       return state;
     }
