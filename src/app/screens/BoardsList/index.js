@@ -17,11 +17,9 @@ class BoardsListContainer extends Component {
   };
 
   render() {
-    return this.props.loading ? (
-      <h1>Loading</h1>
-    ) : (
-      <BoardsList boards={this.props.boards} onDeleteBoard={this.handleDeleteBoard} />
-    );
+    return this.props.loading
+      ? <h1>Loading</h1>
+      : <BoardsList boards={this.props.boards} onDeleteBoard={this.handleDeleteBoard} />;
   }
 }
 
