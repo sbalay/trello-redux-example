@@ -13,11 +13,11 @@ class BoardDetailContainer extends Component {
   }
 
   render() {
-    const content = this.props.loading
-      ? <h1>Loading</h1>
-      : <h1 key={this.props.board.id}>
-          {this.props.board.name}
-        </h1>;
+    const content = this.props.loading ? (
+      <h1>Loading</h1>
+    ) : (
+      <h1 key={this.props.board.id}>{this.props.board.name}</h1>
+    );
 
     return (
       <div>

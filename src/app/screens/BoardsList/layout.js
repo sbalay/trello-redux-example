@@ -1,32 +1,18 @@
-import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ROUTES } from '../../../config/routes';
 import { propTypes as boardPropTypes } from '../../../redux/boards/reducer';
-import './styles.css';
 
-class BoardsList extends PureComponent {
-  handleDeleteBoard = id => {
-    this.onDeleteBoard(id);
-  };
+import BoardCard from './Components/BoardCard';
 
-  render() {
-    return (
-      <ul>
-        {this.boards.map(board =>
-          <div className="board-card" key={board.id}>
-            <Link to={ROUTES.BOARD_DETAIL(board.id)}>
-              <h2>
-                {board.name}
-              </h2>
-            </Link>
-            <button onClick={this.handleDeleteBoard}>X</button>
-          </div>
-        )}
-      </ul>
-    );
-  }
+function BoardsList({ boards, onDeleteBoard }) {
+  return (
+    <ul>
+      {boards.map(board => (
+        <BoardCard key={board.id} id={board.id} name={board.name} onDeleteBoard={onDeleteBoard} />
+      ))}
+    </ul>
+  );
 }
 
 BoardsList.propTypes = {
