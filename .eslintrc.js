@@ -41,7 +41,6 @@ module.exports = {
     "import/prefer-default-export": "off",
     "import/no-unresolved": "error",
     "import/extensions": ["error", { js: "never" }],
-    "import/no-extraneous-dependencies": "off",
     "import/named": "error",
     "import/default": "error",
     "import/namespace": "error",

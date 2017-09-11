@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import Immutable from 'seamless-immutable';
 
+import { removeArrayElementById } from '../../utils/arrayUtils';
+
 import { actions } from './actions';
 
 const defaultState = {
@@ -39,13 +41,9 @@ export default function reducer(state = Immutable(defaultState), action) {
       return state.merge({ loading: true });
     }
     case actions.DELETE_BOARD_SUCCESS: {
-      const deletedBoardIndex = state.list.findIndex(board => board.id === action.payload.boardId);
-      const newList = state.list
-        .slice(0, deletedBoardIndex)
-        .concat(state.list.slice(deletedBoardIndex + 1, state.list.length));
       return state.merge({
         loading: false,
-        list: newList
+        list: removeArrayElementById(state.list, action.payload.boardId)
       });
     }
     case actions.DELETE_BOARD_FAILURE: {
