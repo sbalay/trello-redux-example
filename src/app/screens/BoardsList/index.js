@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { ROUTES } from '../../../config/routes';
 import BoardActions from '../../../redux/boards/actions';
 import { propTypes as boardPropTypes } from '../../../redux/boards/reducer';
+
+import BoardsList from './layout';
 
 class BoardsListContainer extends Component {
   componentWillMount() {
     this.props.dispatch(BoardActions.getBoards());
   }
 
+  handleDeleteBoard = boardId => {
+    this.props.dispatch(BoardActions.deleteBoard(boardId));
+  };
+
   render() {
-    return this.props.loading
-      ? <h1>Loading</h1>
-      : <ul>
-          {this.props.boards.map(board =>
-            <li key={board.id}>
-              <Link to={ROUTES.BOARD_DETAIL(board.id)}>
-                {board.name}
-              </Link>
-            </li>
-          )}
-        </ul>;
+    return this.props.loading ? (
+      <h1>Loading</h1>
+    ) : (
+      <BoardsList boards={this.props.boards} onDeleteBoard={this.handleDeleteBoard} />
+    );
   }
 }
 
