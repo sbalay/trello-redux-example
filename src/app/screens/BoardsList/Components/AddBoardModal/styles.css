@@ -1,0 +1,25 @@
+.add-board-button {
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 100px;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px;
+}
+
+.modal-button {
+  margin: 10px 15px;
+}

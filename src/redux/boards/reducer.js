@@ -49,6 +49,12 @@ export default function reducer(state = Immutable(defaultState), action) {
     case actions.DELETE_BOARD_FAILURE: {
       return state.merge({ loading: false, error: action.payload.error });
     }
+    case actions.ADD_BOARD: {
+      return state.merge({ loading: true });
+    }
+    case actions.ADD_BOARD_FAILURE: {
+      return state.merge({ loading: false, error: action.payload.error });
+    }
     default: {
       return state;
     }

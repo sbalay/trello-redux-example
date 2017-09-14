@@ -11,3 +11,7 @@ export function getBoard(id) {
 export function deleteBoard(id) {
   return api.delete(`/boards/${id}`);
 }
+
+export function addBoard(name, color) {
+  return api.post(`/boards`, { name, color });
+}
