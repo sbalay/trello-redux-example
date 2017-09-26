@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import BoardActions from '../../../../redux/boards/actions';
+import BoardActions from '../../../../../redux/boards/actions';
 
 import AddBoardModal from './layout';
 import './styles.css';
