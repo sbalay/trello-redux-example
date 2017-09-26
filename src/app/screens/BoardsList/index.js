@@ -16,19 +16,11 @@ class BoardsListContainer extends Component {
     this.props.dispatch(BoardActions.deleteBoard(boardId));
   };
 
-  handleAddNewBoard = (boardName, boardColor) => {
-    this.props.dispatch(BoardActions.addBoard(boardName, boardColor));
-  };
-
   render() {
     return this.props.loading ? (
       <h1>Loading</h1>
     ) : (
-      <BoardsList
-        boards={this.props.boards}
-        onDeleteBoard={this.handleDeleteBoard}
-        onAddNewBoard={this.handleAddNewBoard}
-      />
+      <BoardsList boards={this.props.boards} onDeleteBoard={this.handleDeleteBoard} />
     );
   }
 }

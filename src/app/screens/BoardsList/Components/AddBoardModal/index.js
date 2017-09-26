@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import BoardActions from '../../../../../redux/boards/actions';
 
 import AddBoardModal from './layout';
 import './styles.css';
@@ -25,7 +27,7 @@ class AddBoardModalContainer extends Component {
       window.alert('You should give a board name and color');
       /* eslint-enable no-alert */
     } else {
-      this.props.onSubmit(boardName, boardColor);
+      this.props.dispatch(BoardActions.addBoard(boardName, boardColor));
       this.handleCloseModal();
     }
   };
@@ -42,8 +44,4 @@ class AddBoardModalContainer extends Component {
   }
 }
 
-AddBoardModalContainer.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-};
-
-export default AddBoardModalContainer;
+export default connect()(AddBoardModalContainer);

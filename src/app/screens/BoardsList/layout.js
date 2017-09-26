@@ -7,10 +7,10 @@ import BoardCard from './Components/BoardCard';
 import AddBoardModal from './Components/AddBoardModal';
 import './styles.css';
 
-function BoardsList({ boards, onDeleteBoard, onAddNewBoard }) {
+function BoardsList({ boards, onDeleteBoard }) {
   return (
     <div className="board-list-container">
-      <AddBoardModal onSubmit={onAddNewBoard} />
+      <AddBoardModal />
       <div className="boardlist">
         {boards.map(board => (
           <BoardCard key={board.id} id={board.id} name={board.name} onDeleteBoard={onDeleteBoard} />
@@ -22,8 +22,7 @@ function BoardsList({ boards, onDeleteBoard, onAddNewBoard }) {
 
 BoardsList.propTypes = {
   boards: PropTypes.arrayOf(boardPropTypes.board).isRequired,
-  onDeleteBoard: PropTypes.func.isRequired,
-  onAddNewBoard: PropTypes.func.isRequired
+  onDeleteBoard: PropTypes.func.isRequired
 };
 
 export default BoardsList;
