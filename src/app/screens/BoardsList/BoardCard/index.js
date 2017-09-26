@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { ROUTES } from '../../../../../config/routes';
+import { ROUTES } from '../../../../config/routes';
 import './styles.css';
 
 class BoardsList extends PureComponent {

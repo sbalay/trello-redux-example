@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { propTypes as boardPropTypes } from '../../../redux/boards/reducer';
 
-import BoardCard from './Components/BoardCard';
-import AddBoardModal from './Components/AddBoardModal';
+import BoardCard from './BoardCard';
+import AddBoardModal from './AddBoardModal';
 import './styles.css';
 
 function BoardsList({ boards, onDeleteBoard }) {
