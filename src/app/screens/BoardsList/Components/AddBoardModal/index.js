@@ -19,13 +19,13 @@ class AddBoardModalContainer extends Component {
     });
   };
 
-  handleSubmit = value => {
-    if (!value.boardName || !value.boardColor) {
+  handleSubmit = ({ boardName, boardColor }) => {
+    if (!boardName || !boardColor) {
       /* eslint-disable no-alert */
       window.alert('You should give a board name and color');
       /* eslint-enable no-alert */
     } else {
-      this.props.onSubmit(value.boardName, value.boardColor);
+      this.props.onSubmit(boardName, boardColor);
       this.handleCloseModal();
     }
   };
