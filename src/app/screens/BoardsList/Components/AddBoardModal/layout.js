@@ -32,7 +32,7 @@ const AddBoardModal = ({ handleSubmit, visible, onCloseModal, onOpenModal }) => 
     >
       <div className="modal-container">
         <h1>what is the name of the new board?</h1>
-        <form onSubmit={handleSubmit} name={FORM_NAME}>
+        <form onSubmit={handleSubmit} className="modal-form-container" name={FORM_NAME}>
           <Field component={INPUT} name={BOARD_NAME} type={FIELD_TYPE} placeholder={NEW_BOARDNAME} />
           <Field component={INPUT} name={BOARD_COLOR} type={FIELD_TYPE} placeholder={NEW_BOARD_COLOR} />
           <div className="modal-buttons-container">
