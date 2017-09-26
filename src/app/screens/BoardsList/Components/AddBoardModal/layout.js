@@ -5,12 +5,12 @@ import { Field, reduxForm } from 'redux-form';
 
 import './styles.css';
 
-const AddBoardModal = ({ handleSubmit, visible, closeModal, openModal }) => (
+const AddBoardModal = ({ handleSubmit, visible, onCloseModal, onOpenModal }) => (
   <div>
-    <button className="add-board-button" onClick={openModal}>
+    <button className="add-board-button" onClick={onOpenModal}>
       + Add New Board
     </button>
-    <Modal visible={visible} width="400" height="300" effect="fadeInLeft" onClickAway={closeModal}>
+    <Modal visible={visible} width="400" height="300" effect="fadeInLeft" onClickAway={onOpenModal}>
       <div className="modal-container">
         <h1>¿what is the name of the new board?</h1>
         <form onSubmit={handleSubmit} name="addBoard">
@@ -20,7 +20,7 @@ const AddBoardModal = ({ handleSubmit, visible, closeModal, openModal }) => (
             <button type="submit" className="modal-button">
               Add
             </button>
-            <button className="modal-button" onClick={closeModal}>
+            <button className="modal-button" onClick={onCloseModal}>
               Close
             </button>
           </div>
@@ -33,8 +33,8 @@ const AddBoardModal = ({ handleSubmit, visible, closeModal, openModal }) => (
 AddBoardModal.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   visible: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired
+  onCloseModal: PropTypes.func.isRequired,
+  onOpenModal: PropTypes.func.isRequired
 };
 
 export default reduxForm({

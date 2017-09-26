@@ -7,13 +7,13 @@ import './styles.css';
 class AddBoardModalContainer extends Component {
   state = { visible: false };
 
-  openModal = () => {
+  handleOpenModal = () => {
     this.setState({
       visible: true
     });
   };
 
-  closeModal = () => {
+  handleCloseModal = () => {
     this.setState({
       visible: false
     });
@@ -26,7 +26,7 @@ class AddBoardModalContainer extends Component {
       /* eslint-enable no-alert */
     } else {
       this.props.onSubmit(value.boardName, value.boardColor);
-      this.closeModal();
+      this.handleCloseModal();
     }
   };
 
@@ -35,8 +35,8 @@ class AddBoardModalContainer extends Component {
       <AddBoardModal
         onSubmit={this.handleSubmit}
         visible={this.state.visible}
-        openModal={this.openModal}
-        closeModal={this.closeModal}
+        onOpenModal={this.handleOpenModal}
+        onCloseModal={this.handleCloseModal}
       />
     );
   }
