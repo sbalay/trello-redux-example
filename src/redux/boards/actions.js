@@ -10,7 +10,10 @@ export const actions = stringArrayToObject([
   'GET_BOARD_FAILURE',
   'DELETE_BOARD',
   'DELETE_BOARD_SUCCESS',
-  'DELETE_BOARD_FAILURE'
+  'DELETE_BOARD_FAILURE',
+  'ADD_BOARD',
+  'ADD_BOARD_SUCCESS',
+  'ADD_BOARD_FAILURE'
 ]);
 
 const actionCreators = {
@@ -92,6 +95,34 @@ const actionCreators = {
   deleteBoardFailure(error) {
     return {
       type: actions.DELETE_BOARD_FAILURE,
+      payload: { error }
+    };
+  },
+  addBoard(boardName, boardColor) {
+    return async dispatch => {
+      dispatch({ type: actions.ADD_BOARD });
+      try {
+        const response = await BoardService.addBoard(boardName, boardColor);
+        if (response.ok) {
+          dispatch(actionCreators.addBoardSuccess());
+          dispatch(actionCreators.getBoards());
+        } else {
+          throw new Error(response);
+        }
+      } catch (e) {
+        dispatch(actionCreators.addBoardFailure(e));
+      }
+    };
+  },
+  addBoardSuccess(boardId) {
+    return {
+      type: actions.ADD_BOARD_SUCCESS,
+      payload: { boardId }
+    };
+  },
+  addBoardFailure(error) {
+    return {
+      type: actions.ADD_BOARD_FAILURE,
       payload: { error }
     };
   }
